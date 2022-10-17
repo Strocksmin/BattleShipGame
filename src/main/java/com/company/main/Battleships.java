@@ -22,4 +22,14 @@ public class Battleships {
     public void storeShipCoordinates(int row, int col) {
         shipsCoordinates.add(new Point(row, col));
     }
+
+    public void removeShipCoordinate(int row, int col) {
+
+    }
+    public boolean isShipHit(int row, int col) {
+        return false;
+    }
+    public boolean isShipSunk() {
+        return false;
+    }
 }
