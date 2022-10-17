@@ -104,7 +104,7 @@ public class Gameboard {
 
     public boolean takeAShot(int row, int col) {
         boolean didItHit = false;
-        if (gameBoard[row][col] == 'O' || gameBoard[row][col] == 'X') {
+        if (gameBoard[row][col] == 'O' /*|| gameBoard[row][col] == 'X' */) {
             didItHit = true;
             fogOfWarBoard[row][col] = 'X';
             gameBoard[row][col] = 'X';

@@ -78,6 +78,8 @@ public class Main {
         int currentPlayer = 0;
         int oppositePlayer = 1;
 
+        boolean playerIsShot = false;
+
         boolean winGame = false;
         while(!winGame) {
             for (int i = 0; i < playerArr.length; i++) {
@@ -106,6 +108,8 @@ public class Main {
                     for (Battleships ship : playerArr[oppositePlayer].ships) {
                         if (ship.isShipHit(startRow, startCol)) {
                             ship.removeShipCoordinate(startRow, startCol);
+                            //// -- -- - ///
+                            //playerArr[oppositePlayer].gameBoard.getGameBoard()[startRow][startCol] = 'Ø';
                             if (ship.isShipSunk()) {
                                 System.out.printf("Вы потопили %s! Выберите новую цель:%n", ship.name);
                             } else {
@@ -114,21 +118,27 @@ public class Main {
                         }
                     }
 
+                    // попал
+                    playerIsShot = true;
+
                 } else {
+                    playerIsShot = false;
                     System.out.printf("Вы промахнулись! Попробуйте снова!%n");
                 }
                 if (playerArr[oppositePlayer].allShipsSunk()) {
                     winGame = true;
                     endGame(playerArr[currentPlayer].name);
                 }
-                clearScreenAfterEnter(input);
+                if (!playerIsShot) clearScreenAfterEnter(input);
 
-                if (currentPlayer == 0) {
-                    currentPlayer = 1;
-                    oppositePlayer = 0;
-                } else {
-                    currentPlayer = 0;
-                    oppositePlayer = 1;
+                if (!playerIsShot) {
+                    if (currentPlayer == 0) {
+                        currentPlayer = 1;
+                        oppositePlayer = 0;
+                    } else {
+                        currentPlayer = 0;
+                        oppositePlayer = 1;
+                    }
                 }
 
             }
@@ -150,7 +160,7 @@ public class Main {
         System.out.println("Нажмите Enter и уступите ход другому игроку");
         String junk = input.nextLine();
         junk = input.nextLine();
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 30; i++) {
             System.out.println();
         }
     }
