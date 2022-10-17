@@ -61,6 +61,20 @@ public class Gameboard {
     }
 
     public void updateBoard(int startRow, int startCol, int endRow, int endCol, Battleships ship) {
-
+        if (startRow == endRow) {
+            int startIndex = Math.min(startCol, endCol);
+            int endIndex = Math.max(startCol, endCol);
+            for (int i = startIndex; i <= endIndex; i++) {
+                gameBoard[startRow][i] = 'O';
+                ship.storeShipCoordinates(startRow, i);
+            }
+        } else {
+            int startIndex = Math.min(startRow, endRow);
+            int endIndex = Math.max(startRow, endRow);
+            for (int i = startIndex; i <= endIndex; i++) {
+                gameBoard[i][startCol] = 'O';
+                ship.storeShipCoordinates(i, startCol);
+            }
+        }
     }
 }
