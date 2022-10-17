@@ -6,7 +6,7 @@ public class Gameboard {
     private String[] columnHeader;
     private String[] rowHeader;
 
-    Gameboard() {
+    public Gameboard() {
         gameBoard = new char[10][10];
         fogOfWarBoard = new char[10][10];
         columnHeader = new String[]{
@@ -20,6 +20,22 @@ public class Gameboard {
                 fogOfWarBoard[i][j] = '~';
             }
         }
+    }
+
+    public char[][] getGameBoard() {
+        return gameBoard;
+    }
+
+    public char[][] getFogOfWarBoard() {
+        return fogOfWarBoard;
+    }
+
+    public String[] getColumnHeader() {
+        return columnHeader;
+    }
+
+    public String[] getRowHeader() {
+        return rowHeader;
     }
 
     private void printBoard(char[][] board) {
@@ -42,5 +58,9 @@ public class Gameboard {
 
     public void printFogOfWarBoard() {
         printBoard(fogOfWarBoard);
+    }
+
+    public void updateBoard(int startRow, int startCol, int endRow, int endCol, Battleships ship) {
+
     }
 }
