@@ -79,6 +79,26 @@ public class Gameboard {
     }
 
     public boolean checkProximity(int startRow, int startCol, int endRow, int endCol) {
-        return false;
+        boolean isShipTooClose = false;
+
+        int topLeftCol = Math.min(startCol, endCol) - 1;
+        int topLeftRow = Math.min(startRow, endRow) - 1;
+        int bottomRightCol = Math.max(startCol, endCol) + 1;
+        int bottomRightRow = Math.max(startRow, endRow) + 1;
+
+        for (int r = topLeftRow; r <= bottomRightRow; r++) {
+            if (r < 0 || r > 9) {
+                continue;
+            }
+            for (int c = topLeftCol; c <= bottomRightCol; c++) {
+                if (c < 0 || c > 9) {
+                    continue;
+                }
+                if (gameBoard[r][c] == 'O') {
+                    isShipTooClose = true;
+                }
+            }
+        }
+        return isShipTooClose;
     }
 }
