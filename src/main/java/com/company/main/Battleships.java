@@ -20,6 +20,6 @@ public class Battleships {
     }
 
     public void storeShipCoordinates(int row, int col) {
-
+        shipsCoordinates.add(new Point(row, col));
     }
 }
