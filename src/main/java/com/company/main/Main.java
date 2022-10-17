@@ -136,11 +136,15 @@ public class Main {
         System.out.printf("Вы потопили последний вражеский корабль. Вы победили! Поздравляем%n");
     }
     public static int convertRowInput(String coordinate) {
-        return 1;
+        return coordinate.toUpperCase().charAt(0) - 65;
     }
 
     public static int convertColumnInput(String coordinate) {
-        return 9;
+        if (coordinate.length() > 2 && coordinate.startsWith("10", 1)) {
+            return  9;
+        } else {
+            return coordinate.charAt(1) - 49;
+        }
     }
     static void clearScreenAfterEnter(Scanner input) {
         System.out.println("Нажмите Enter и уступите ход другому игроку");
