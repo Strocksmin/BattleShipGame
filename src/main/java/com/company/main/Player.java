@@ -19,6 +19,12 @@ public class Player {
     }
 
     public boolean allShipsSunk() {
-        return false;
+        boolean allSunk = true;
+        for (Battleships ship : this.ships) {
+            if (!ship.isShipSunk()) {
+                allSunk = false;
+            }
+        }
+        return allSunk;
     }
 }
