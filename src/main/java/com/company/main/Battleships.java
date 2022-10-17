@@ -24,12 +24,12 @@ public class Battleships {
     }
 
     public void removeShipCoordinate(int row, int col) {
-
+        shipsCoordinates.remove(new Point(row, col));
     }
     public boolean isShipHit(int row, int col) {
-        return false;
+        return shipsCoordinates.contains(new Point(row, col));
     }
     public boolean isShipSunk() {
-        return false;
+        return shipsCoordinates.isEmpty();
     }
 }
