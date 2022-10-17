@@ -9,9 +9,17 @@ public class Battleships {
     int length;
     Set<Point> shipsCoordinates;
 
-    Battleships(String name, int length) {
+    public Battleships(String name, int length) {
         this.name = name;
         this.length = length;
         shipsCoordinates = new HashSet<>();
+    }
+
+    public Set<Point> getShipsCoordinates() {
+        return shipsCoordinates;
+    }
+
+    public void storeShipCoordinates(int row, int col) {
+
     }
 }
