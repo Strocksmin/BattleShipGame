@@ -8,7 +8,7 @@ public class Player {
     public List<Battleships> ships;
     String name = "Игрок ";
 
-    Player(int num) {
+    public Player(int num) {
         this.gameBoard = new Gameboard();
         this.name += num;
         this.ships = new ArrayList<>();
@@ -16,5 +16,9 @@ public class Player {
             Battleships tempShip = new Battleships(craft.name, craft.length);
             ships.add(tempShip);
         }
+    }
+
+    public boolean allShipsSunk() {
+        return false;
     }
 }
