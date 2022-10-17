@@ -89,4 +89,26 @@ public class GameboardTest {
         assertFalse(gameboard.checkProximity(7, 5,7,5));
         assertFalse(gameboard.checkProximity(7, 5,9,9));
     }
+
+    @Test
+    @DisplayName("Проверка попадания по кораблю")
+    void testTakeAShot() {
+        Gameboard gameboard = new Gameboard();
+        char[][] gm = gameboard.getGameBoard();
+        Battleships battleships = new Battleships(Fleet.values()[0].name(), Fleet.values()[0].getLength());
+        battleships.storeShipCoordinates(3,3);
+        battleships.storeShipCoordinates(4,3);
+        battleships.storeShipCoordinates(5,3);
+        battleships.storeShipCoordinates(6,3);
+        battleships.storeShipCoordinates(7,3);
+        gameboard.updateBoard(3, 3,7,3, battleships);
+        assertTrue(gameboard.checkProximity(3, 3,7,3));
+        assertTrue(gameboard.takeAShot(3,3));
+        assertTrue(gameboard.takeAShot(4,3));
+        assertTrue(gameboard.takeAShot(5,3));
+        assertTrue(gameboard.takeAShot(6,3));
+        assertTrue(gameboard.takeAShot(7,3));
+        assertFalse(gameboard.takeAShot(8,3));
+        assertFalse(gameboard.takeAShot(1,1));
+    }
 }

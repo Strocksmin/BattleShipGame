@@ -101,4 +101,8 @@ public class Gameboard {
         }
         return isShipTooClose;
     }
+
+    public boolean takeAShot(int row, int col) {
+        return false;
+    }
 }
