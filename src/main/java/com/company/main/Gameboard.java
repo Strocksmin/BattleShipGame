@@ -77,4 +77,8 @@ public class Gameboard {
             }
         }
     }
+
+    public boolean checkProximity(int startRow, int startCol, int endRow, int endCol) {
+        return false;
+    }
 }

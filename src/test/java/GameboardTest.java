@@ -67,4 +67,26 @@ public class GameboardTest {
             assertTrue(Arrays.equals(empty[i], gm[i]));
         }
     }
+
+    @Test
+    @DisplayName("Проверка близости двух кораблей")
+    void testCheckProximity() {
+        Gameboard gameboard = new Gameboard();
+        char[][] gm = gameboard.getGameBoard();
+        char[][] empty = new char[10][10];
+
+        Battleships battleships = new Battleships(Fleet.values()[0].name(), Fleet.values()[0].getLength());
+        battleships.storeShipCoordinates(3,3);
+        battleships.storeShipCoordinates(4,3);
+        battleships.storeShipCoordinates(5,3);
+        battleships.storeShipCoordinates(6,3);
+        battleships.storeShipCoordinates(7,3);
+        gameboard.updateBoard(3, 3,7,3, battleships);
+        assertFalse(gameboard.checkProximity(3, 5, 7, 5));
+        assertTrue(gameboard.checkProximity(3, 3,7,3));
+        assertTrue(gameboard.checkProximity(3, 4,7,4));
+        assertTrue(gameboard.checkProximity(3, 1,5,5));
+        assertFalse(gameboard.checkProximity(7, 5,7,5));
+        assertFalse(gameboard.checkProximity(7, 5,9,9));
+    }
 }
